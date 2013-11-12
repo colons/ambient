@@ -23,6 +23,5 @@ applied to the widget, otherwise they'll be left default.
 
 You probably don't want your instance to be public, so you can easily get away
 with just running `python -m SimpleHTTPServer` from the repository and visiting
-(localhost:8000)[http://localhost:8000/] in your browser. You can then kill the
-server, as it will not be needed until you update your config or need to reload
-for some other reason.
+localhost:8000 in your browser. You can then kill the server, as it will not be
+needed until you update your config or need to reload for some other reason.
