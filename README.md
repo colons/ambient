@@ -6,6 +6,8 @@ setup, using the config in this repository, [here](http://colons.co/ambient/).
 ## Requirements
 
 - A webserver that can serve files from a directory
+- A browser that supports flexbox and, ideally, can go fullscreen with all its
+  UI hidden (read: Chrome)
 
 ## Setup
 
