@@ -25,3 +25,7 @@ You probably don't want your instance to be public, so you can easily get away
 with just running `python -m SimpleHTTPServer` from the repository and visiting
 localhost:8000 in your browser. You can then kill the server, as it will not be
 needed until you update your config or need to reload for some other reason.
+
+If you want custom CSS to override something in an iframe or make the page look
+all metal or something and don't want a dirty working branch, put it in a file
+called custom.css and it will load.
