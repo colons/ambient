@@ -15,9 +15,17 @@ html {
 
 #widgets {
   display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+
   align-content: stretch;
+  -webkit-align-content: stretch;
+
   flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+
   justify-content: space-around;
+  -webkit-justify-content: space-around;
 }
 
 #widgets .widget {
