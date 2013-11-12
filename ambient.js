@@ -17,8 +17,20 @@ $(function() {
       var content = element.find('> :last-child');
       content.addClass('content');
 
+      var reload;
+
+      switch (widget.type) {
+        case 'image':
+          var originalSrc = content.attr('src');
+          reload = function() { content.attr('src', originalSrc + '?' + Date.now()); };
+          break;
+        default:
+          reload = function() { element.html(element.html()); };
+      }
+      
+
       if (widget.reload !== undefined) {
-        setInterval(function() {element.html(element.html());}, widget.reload);
+        setInterval(reload, widget.reload);
       }
 
       $.each(['width', 'height'], function(i, key) {

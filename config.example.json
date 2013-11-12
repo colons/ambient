@@ -16,8 +16,9 @@
     {
       "name": "A webcam somewhere",
       "type": "image",
-      "reload": 1000,
-      "url": "http://images.opentopia.com/cams/8491/big.jpg"
+      "reload": 5000,
+      "width": "400px",
+      "url": "http://vso.aa0.netvolante.jp/record/current.jpg"
     },
     {
       "type": "image",
