@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+
+    <script id="frame" type="text/x-handlebars-template">
+      <li class="widget">
+        <h2>
+          {{#if widget.name}}
+            {{widget.name}}
+          {{else}}
+            &nbsp;
+          {{/if}}
+        </h2>
+        {{unframed}}
+      </li>
+    </script>
+
+    <script id="type-iframe" type="text/x-handlebars-template">
+      <iframe src="{{ url }}"/>
+    </script>
+
+    <script id="type-image" type="text/x-handlebars-template">
+      <img src="{{ url }}"/>
+    </script>
+
+    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
+    <script src="ambient.js"></script>
+    <link rel="stylesheet" href="ambient.css"></script>
+  </head>
+  <body>
+    <ul id="widgets">
+    </ul>
+  </body>
+</html>

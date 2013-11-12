@@ -1,0 +1,35 @@
+{
+  "title": "Ambient",
+  "widgets": [
+    {
+      "type": "iframe",
+      "reload": 10000,
+      "width": "400px",
+      "height": "300px",
+      "url": "http://m.yr.no/place/United_Kingdom/England/Leicester/"
+    },
+    {
+      "name": "Shorter weather",
+      "type": "iframe",
+      "url": "http://m.yr.no/place/United_Kingdom/England/Leicester/"
+    },
+    {
+      "name": "A webcam somewhere",
+      "type": "image",
+      "reload": 1000,
+      "url": "http://images.opentopia.com/cams/8491/big.jpg"
+    },
+    {
+      "type": "image",
+      "reload": 10000,
+      "url": "http://www.ssd.noaa.gov/eumet/neatl/avn-l.jpg"
+    },
+    {
+      "name": "Pretty swirls",
+      "type": "image",
+      "reload": 10000,
+      "width": "500px",
+      "url": "http://www.ssd.noaa.gov/eumet/neatl/wv-l.jpg"
+    }
+  ]
+}
