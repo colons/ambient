@@ -15,8 +15,14 @@ setup, using the config in this repository, [here](http://colons.co/ambient/).
 - Copy config.example.json to config.json and season to taste
 - Point your browser at a webserver hosting the directory you cloned to
 
-## Notes on configuring
+## Notes
 
-Names are optional, but space is always made for headings above widgets in
-order to keep alignment consistent. Width and height, if specified, will be
+Widget names are optional, but space is always made for headings above widgets
+in order to keep alignment consistent. Width and height, if specified, will be
 applied to the widget, otherwise they'll be left default.
+
+You probably don't want your instance to be public, so you can easily get away
+with just running `python -m SimpleHTTPServer` from the repository and visiting
+(localhost:8000)[http://localhost:8000/] in your browser. You can then kill the
+server, as it will not be needed until you update your config or need to reload
+for some other reason.
