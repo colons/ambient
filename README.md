@@ -3,8 +3,6 @@
 A trivial [Status Board](http://www.panic.com/statusboard/) ripoff. Example
 setup, using the config in this repository, [here](http://colons.co/ambient/).
 
-----
-
 ## Requirements
 
 - A webserver that can serve files from a directory
