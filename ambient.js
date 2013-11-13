@@ -40,6 +40,14 @@ $(function() {
         setInterval(reload, widget.reload);
       }
 
+      $.each(['style', 'script'], function(i, attr) {
+        if (widget[attr] !== undefined) {
+          var element = document.createElement(attr);
+          $(element).text(widget[attr]);
+          $('head').append(element);
+        }
+      });
+
       $.each(['width', 'height'], function(i, key) {
         var value = widget[key];
         if (value !== undefined) {

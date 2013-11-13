@@ -11,7 +11,9 @@
     {
       "name": "The time, dawg",
       "type": "raw",
-      "content": "<p id=clock style=\"font-size: 4em;\"></p><script>setInterval(function() {now = new Date(); $('#clock').text(now.toLocaleTimeString())}, 1000);</script>"
+      "content": "<p id=\"clock\"></p>",
+      "script": "setInterval(function() {now = new Date(); $('#clock').text(now.toLocaleTimeString())}, 1000);",
+      "style": "#clock {font-size: 4em; box-shadow: none;}"
     },
     {
       "name": "Shorter weather",
