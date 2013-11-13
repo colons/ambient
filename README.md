@@ -13,6 +13,7 @@ setup, using the config in this repository, [here](http://colons.co/ambient/).
 
 - Clone the repository
 - Copy config.example.json to config.json and season to taste
+- Make custom.css and custom.js files, if you so desire
 - Point your browser at a webserver hosting the directory you cloned to
 
 ## Notes
@@ -26,6 +27,8 @@ with just running `python -m SimpleHTTPServer` from the repository and visiting
 localhost:8000 in your browser. You can then kill the server, as it will not be
 needed until you update your config or need to reload for some other reason.
 
-If you want custom CSS to override something in an iframe or make the page look
-all metal or something and don't want a dirty working branch, put it in a file
-called custom.css and it will load.
+You can provide custom JS and custom CSS in `"script"` and `"style"` attributes
+of your widget, as the clock widget in the example config does, but for
+anything more than one or two function calls, you're probably better off making
+custom.js and custom.css files. You'll stop getting warnings in your console
+about 404s that way, too.
