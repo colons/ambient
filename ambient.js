@@ -6,9 +6,16 @@ $(function() {
     $('title').text(data.title);
 
     $.each(data.widgets, function(i, widget) {
-      var source = $("#type-" + widget.type).html();
-      var template = Handlebars.compile(source);
-      unframed = new Handlebars.SafeString(template(widget));
+      var unframed;
+
+      if (widget.type === "raw") {
+        unframed = new Handlebars.SafeString(widget.content);
+      } else {
+        var source = $("#type-" + widget.type).html();
+        var template = Handlebars.compile(source);
+        unframed = new Handlebars.SafeString(template(widget));
+      }
+
       $('#widgets').append(frame({unframed: unframed, widget: widget}));
 
       var element = $('#widgets > :last-child');
@@ -35,7 +42,7 @@ $(function() {
 
       $.each(['width', 'height'], function(i, key) {
         var value = widget[key];
-        if (value !== undefined) { 
+        if (value !== undefined) {
           content.css(key, widget[key]);
         }
       });
