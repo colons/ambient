@@ -30,7 +30,7 @@ html {
 
 #widgets .widget {
   position: relative;
-  margin: 0 .1em;
+  margin: 0 .1em .5em;
 }
 
 h2 {
