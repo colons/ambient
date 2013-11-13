@@ -10,10 +10,11 @@
     },
     {
       "name": "The time, dawg",
+      "id": "clock",
       "type": "raw",
-      "content": "<p id=\"clock\"></p>",
-      "script": "setInterval(function() {now = new Date(); $('#clock').text(now.toLocaleTimeString())}, 1000);",
-      "style": "#clock {font-size: 4em; box-shadow: none;}"
+      "content": "<p></p>",
+      "script": "setInterval(function() {now = new Date(); $('#clock p').text(now.toLocaleTimeString())}, 1000);",
+      "style": "#clock p {font-size: 4em; box-shadow: none;}"
     },
     {
       "name": "Shorter weather",

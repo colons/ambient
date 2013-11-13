@@ -40,6 +40,10 @@ $(function() {
         setInterval(reload, widget.reload);
       }
 
+      if (widget.id !== undefined) {
+        element.attr('id', widget.id);
+      }
+
       $.each(['style', 'script'], function(i, attr) {
         if (widget[attr] !== undefined) {
           var element = document.createElement(attr);
