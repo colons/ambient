@@ -3,7 +3,7 @@
 ![A television on a wall running an Ambient instance][instance]
 
 A trivial [Status Board][panic] ripoff. Pictured above is the instance that
-runs in the office at @rkhleics, and the example config in this repository is
+runs in the office at [@rkhleics][rkh], and the example config in this repository is
 demonstrated [here][demo].
 
 ## Requirements
@@ -38,4 +38,5 @@ about 404s that way, too.
 
 [instance]: https://raw.github.com/colons/ambient/master/instance.jpg
 [panic]: http://www.panic.com/statusboard/
+[rkh]: https://github.com/rkhleics
 [demo]: http://colons.co/ambient/
