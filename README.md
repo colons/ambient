@@ -1,8 +1,10 @@
 # Ambient
 
-A trivial [Status Board](http://www.panic.com/statusboard/) ripoff. Example
-setup, using the example config in this repository,
-[here](http://colons.co/ambient/).
+![A television on a wall running an Ambient instance][instance]
+
+A trivial [Status Board][panic] ripoff. Pictured above is the instance that
+runs in the office at @rkhleics, and the example config in this repository is
+demonstrated [here][demo].
 
 ## Requirements
 
@@ -25,11 +27,15 @@ localhost:8000 in your browser. You can then kill the server, as it will not be
 needed until you update your config or need to reload for some other reason.
 
 Widget names are optional, but space is always made for headings above widgets
-in order to keep alignment consistent. Width and height, if specified, will be
-applied to the widget, otherwise they'll be left default.
+in order to keep alignment consistent. `"width"` and `"height"`, if specified,
+will be applied to the widget, otherwise they'll be left default.
 
 You can provide custom JS and custom CSS in `"script"` and `"style"` attributes
 of your widget, as the clock widget in the example config does, but for
 anything more than one or two function calls, you're probably better off making
 custom.js and custom.css files. You'll stop getting warnings in your console
 about 404s that way, too.
+
+[instance]: https://raw.github.com/colons/ambient/master/instance.jpg
+[panic]: http://www.panic.com/statusboard/
+[demo]: http://colons.co/ambient/
