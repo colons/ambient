@@ -16,7 +16,7 @@ function initWidget(widget) {
   var element = $('#widgets > :last-child');
   element.addClass(widget.type);
 
-  var content = element.find('> :last-child');
+  var content = element.find('> :not(h2)');
   content.addClass('content');
 
   var reload;
