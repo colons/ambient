@@ -29,7 +29,6 @@ function initWidget(widget) {
     default:
       reload = function() { element.html(element.html()); };
   }
-  
 
   if (widget.reload !== undefined) {
     setInterval(reload, widget.reload);
