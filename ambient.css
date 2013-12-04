@@ -45,12 +45,13 @@ h2 {
   overflow: hidden;
 }
 
-.sandbox img {
+.sandbox > img {
   width: 100%;
-  height: 100%;
+  height:  100%;
+  margin-bottom: -.3em;
 }
 
-.sandbox iframe {
+.sandbox > iframe {
   background-color: white;
   width: 100%;
   height: 100%;
@@ -83,12 +84,9 @@ h2 {
     box-shadow: none;
     font-family: "HelveticaNeue-Bold";
     text-align: center;
+    font-size: 5em;
 }
 
 .widget.clock .time {
-    font-size: 10em;
-}
-
-.widget.clock .date {
-    font-size: 5em;
+    font-size: 2em;
 }
