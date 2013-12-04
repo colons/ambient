@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <script id="frame" type="text/x-handlebars-template">
-      <li class="widget">
+      <li class="widget {{widget.type}}">
         <h2>
           {{#if widget.name}}
             {{widget.name}}
@@ -13,16 +13,22 @@
             &nbsp;
           {{/if}}
         </h2>
-        {{unframed}}
+        <div class="sandbox">
+        </div>
       </li>
     </script>
 
     <script id="type-iframe" type="text/x-handlebars-template">
-      <iframe src="{{ url }}"/>
+      <iframe src="{{ widget.url }}"/>
     </script>
 
     <script id="type-image" type="text/x-handlebars-template">
-      <img src="{{ url }}"/>
+      <img src="{{ widget.url }}"/>
+    </script>
+
+    <script id="type-clock" type="text/x-handlebars-template">
+      <p class="time">{{ hours }}<span class="colon">:</span>{{ minutes }}</p>
+      <p class="date">{{ weekday }} {{ date }} {{ month }}</p>
     </script>
 
     <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>

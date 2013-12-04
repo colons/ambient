@@ -1,57 +1,48 @@
 var frame;
 
 function initWidget(widget) {
-  var unframed;
+  var source = $('#type-' + widget.type).html();
+  var template = new Handlebars.compile(source);
 
-  if (widget.type === "raw") {
-    unframed = new Handlebars.SafeString(widget.content);
-  } else {
-    var source = $("#type-" + widget.type).html();
-    var template = Handlebars.compile(source);
-    unframed = new Handlebars.SafeString(template(widget));
-  }
-
-  $('#widgets').append(frame({unframed: unframed, widget: widget}));
+  $('#widgets').append(frame({widget: widget}));
 
   var element = $('#widgets > :last-child');
-  element.addClass(widget.type);
-
-  var content = element.find('> :not(h2)');
-  content.addClass('content');
-
-  var reload;
-
-  switch (widget.type) {
-    case 'image':
-      var originalSrc = content.attr('src');
-      reload = function() { content.attr('src', originalSrc + '?' + Date.now()); };
-      break;
-    default:
-      reload = function() { element.html(element.html()); };
-  }
-
-  if (widget.reload !== undefined) {
-    setInterval(reload, widget.reload);
-  }
-
+  var sandbox = element.find('.sandbox');
+  var drawer = getDrawer(widget, sandbox, template);
   if (widget.id !== undefined) {
     element.attr('id', widget.id);
   }
-
-  $.each(['style', 'script'], function(i, attr) {
-    if (widget[attr] !== undefined) {
-      var element = document.createElement(attr);
-      $(element).text(widget[attr]);
-      $('head').append(element);
-    }
-  });
-
   $.each(['width', 'height'], function(i, key) {
     var value = widget[key];
     if (value !== undefined) {
-      content.css(key, widget[key]);
+      sandbox.css(key, widget[key]);
     }
   });
+
+  if (widget.reload !== undefined) {
+    console.log(widget.reload);
+    setInterval(drawer, widget.reload);
+  }
+
+  drawer(true);
+}
+
+function defaultDrawer(initial, widget, sandbox, template) {
+  sandbox.html(template({widget: widget}));
+}
+
+function getDrawer(widget, sandbox, template) {
+  var drawer;
+
+  if (widget.type in drawers) {
+    drawer = drawers[widget.type];
+  } else {
+    drawer = defaultDrawer;
+  }
+
+  return function(initial) {
+    drawer(initial, widget, sandbox, template);
+  };
 }
 
 $(function() {
@@ -66,3 +57,38 @@ $(function() {
     });
   });
 });
+
+
+/* --- WIDGETS --- */
+
+// helpers
+function zeroPad(number) {
+  var s = '00' + number.toString();
+  return s.substr(s.length-2);
+}
+
+var weekdays = [
+  "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+];
+
+// the actual widgets
+var drawers = {
+  image: function(initial, widget, sandbox, template) {
+    if (initial) {
+      defaultDrawer(initial, widget, sandbox, template);
+    }
+    sandbox.find('img').attr('src', widget.url + '?' + Date.now());
+  },
+
+  clock: function(initial, widget, sandbox, template) {
+    now = new Date();
+    sandbox.html(template({
+      hours: zeroPad(now.getHours()),
+      minutes: zeroPad(now.getMinutes()),
+      weekday: weekdays[now.getDay() - 1],
+      date: zeroPad(now.getDate()),
+      month: zeroPad(now.getMonth() + 1)
+    }));
+  }
+};
+

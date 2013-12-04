@@ -9,12 +9,8 @@
       "url": "http://m.yr.no/place/United_Kingdom/England/Leicester/"
     },
     {
-      "name": "The time, dawg",
-      "id": "clock",
-      "type": "raw",
-      "content": "<p></p>",
-      "script": "setInterval(function() {now = new Date(); $('#clock p').text(now.toLocaleTimeString())}, 1000);",
-      "style": "#clock p {font-size: 4em; box-shadow: none;}"
+      "type": "clock",
+      "reload": 1000
     },
     {
       "name": "Shorter weather",

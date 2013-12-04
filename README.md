@@ -30,11 +30,9 @@ Widget names are optional, but space is always made for headings above widgets
 in order to keep alignment consistent. `"width"` and `"height"`, if specified,
 will be applied to the widget, otherwise they'll be left default.
 
-You can provide custom JS and custom CSS in `"script"` and `"style"` attributes
-of your widget, as the clock widget in the example config does, but for
-anything more than one or two function calls, you're probably better off making
-custom.js and custom.css files. You'll stop getting warnings in your console
-about 404s that way, too.
+You can provide custom JS and custom CSS in custom.js and custom.css files in
+the project root.  You'll stop getting warnings in your console about 404s that
+way, too.
 
 [instance]: https://raw.github.com/colons/ambient/master/instance.jpg
 [panic]: http://www.panic.com/statusboard/
