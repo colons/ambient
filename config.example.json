@@ -10,7 +10,8 @@
     },
     {
       "type": "clock",
-      "reload": 1000
+      "reload": 1000,
+      "size": 3
     },
     {
       "name": "Shorter weather",

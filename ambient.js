@@ -81,6 +81,9 @@ var drawers = {
   },
 
   clock: function(initial, widget, sandbox, template) {
+    if (initial && widget.size !== undefined) {
+      sandbox.css('font-size', widget.size.toString() + 'em');
+    }
     now = new Date();
     sandbox.html(template({
       hours: zeroPad(now.getHours()),
