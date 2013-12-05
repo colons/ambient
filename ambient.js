@@ -9,9 +9,11 @@ function initWidget(widget) {
   var element = $('#widgets > :last-child');
   var sandbox = element.find('.sandbox');
   var drawer = getDrawer(widget, sandbox, template);
+
   if (widget.id !== undefined) {
     element.attr('id', widget.id);
   }
+
   $.each(['width', 'height'], function(i, key) {
     var value = widget[key];
     if (value !== undefined) {
@@ -20,15 +22,21 @@ function initWidget(widget) {
   });
 
   if (widget.reload !== undefined) {
-    console.log(widget.reload);
     setInterval(drawer, widget.reload);
   }
 
   drawer(true);
 }
 
-function defaultDrawer(initial, widget, sandbox, template) {
-  sandbox.html(template({widget: widget}));
+function defaultDrawer(initial, widget, sandbox, template, context) {
+  console.log('drawing ' + widget.type);
+  if (context === undefined) {
+    console.log('resetting context');
+    context = {};
+  }
+  context.widget = widget;
+  console.log(context);
+  sandbox.html(template(context));
 }
 
 function getDrawer(widget, sandbox, template) {
@@ -92,6 +100,12 @@ var drawers = {
       date: zeroPad(now.getDate()),
       month: zeroPad(now.getMonth() + 1)
     }));
+  },
+
+  jenkins: function(initial, widget, sandbox, template) {
+    $.getJSON(widget.url, function(data) {
+      defaultDrawer(initial, widget, sandbox, template, {jobs: data.jobs});
+    });
   }
 };
 

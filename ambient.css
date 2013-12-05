@@ -65,32 +65,62 @@ h2 {
 /* --- WIDGET-SPECIFIC STYLES --- */
 /* clock */
 @-webkit-keyframes clock-blink {
-    0% {
-        opacity:1;
-    }
-    50% {
-        opacity:1;
-    }
-    100% {
-        opacity:0;
-    }
+  0% {opacity:1}
+  50% {opacity:1}
+  100% {opacity:0}
 }
 
 .widget.clock .colon {
-    -webkit-animation-direction: normal;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-name: clock-blink;
-    -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-direction: normal;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: clock-blink;
+  -webkit-animation-timing-function: ease-in-out;
 }
 
 .widget.clock div {
-    box-shadow: none;
-    font-family: "HelveticaNeue-Bold";
-    text-align: center;
-    font-size: 5em;
+  box-shadow: none;
+  background: none;
+  font-family: "HelveticaNeue-Bold";
+  text-align: center;
+  font-size: 5em;
 }
 
 .widget.clock .time {
-    font-size: 2em;
+  font-size: 2em;
 }
+
+/* jenkins */
+.widget.jenkins .sandbox {
+  box-shadow: none;
+  overflow: visible;
+}
+
+.widget.jenkins li {
+  display: inline-block;
+}
+
+.widget.jenkins li::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: .5em;
+  background-color: #d66;
+}
+
+.widget.jenkins li.blue_anime::before,
+.widget.jenkins li.red_anime::before,
+.widget.jenkins li.aborted_anime::before {
+  opacity: .5;
+}
+
+.widget.jenkins li.blue::before,
+.widget.jenkins li.blue_anime::before {
+  background-color: #6d6
+}
+.widget.jenkins li.aborted::before,
+.widget.jenkins li.aborted_anime::before {
+  background-color: #aaa
+}
+

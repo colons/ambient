@@ -31,6 +31,14 @@
       <p class="date">{{ weekday }} {{ date }} {{ month }}</p>
     </script>
 
+    <script id="type-jenkins" type="text/x-handlebars-template">
+      <ul>
+        {{#each jobs}}
+          <li class="{{color}}" data-name="{{name}}"></li>
+        {{/each}}
+      </ul>
+    </script>
+
     <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
 
