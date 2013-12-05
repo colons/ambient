@@ -21,6 +21,10 @@ function initWidget(widget) {
     }
   });
 
+  if (widget.scale !== undefined) {
+    sandbox.css('font-size', widget.scale.toString() + 'em');
+  }
+
   if (widget.reload !== undefined) {
     setInterval(drawer, widget.reload);
   }
@@ -89,9 +93,6 @@ var drawers = {
   },
 
   clock: function(initial, widget, sandbox, template) {
-    if (initial && widget.size !== undefined) {
-      sandbox.css('font-size', widget.size.toString() + 'em');
-    }
     now = new Date();
     sandbox.html(template({
       hours: zeroPad(now.getHours()),
