@@ -11,7 +11,7 @@
     {
       "type": "clock",
       "reload": 1000,
-      "size": 3
+      "scale": 3
     },
     {
       "name": "Shorter weather",
