@@ -3,10 +3,10 @@
   "widgets": [
     {
       "type": "iframe",
-      "reload": 10000,
+      "reload": 200000,
       "width": "400px",
       "height": "300px",
-      "url": "http://m.yr.no/place/United_Kingdom/England/Leicester/"
+      "url": "http://procatinator.com/"
     },
     {
       "type": "clock",
@@ -14,9 +14,18 @@
       "scale": 3
     },
     {
-      "name": "Shorter weather",
+      "name": "Some weather",
       "type": "iframe",
-      "url": "http://m.yr.no/place/United_Kingdom/England/Leicester/"
+      "url": "http://m.yr.no/place/United_Kingdom/England/Leicester/",
+      "width": "400px",
+      "height": "300px"
+    },
+    {
+      "name": "A snapshot of the OpenStack Jenkins server",
+      "type": "jenkins",
+      "reload": 100000,
+      "url": "http://colons.co/fake-jenkins-response.json",
+      "scale": 0.3
     },
     {
       "name": "A webcam somewhere",
@@ -24,11 +33,6 @@
       "reload": 5000,
       "width": "400px",
       "url": "http://vso.aa0.netvolante.jp/record/current.jpg"
-    },
-    {
-      "type": "image",
-      "reload": 10000,
-      "url": "http://www.ssd.noaa.gov/eumet/neatl/avn-l.jpg"
     },
     {
       "name": "Pretty swirls",
