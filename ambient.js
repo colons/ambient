@@ -1,8 +1,11 @@
 var frame;
 
-function initWidget(widgetConf) {
-  var widget = {config: widgetConf};
-  var templateSource = $('#type-' + widget.config.type).html();
+function Widget(config) {
+  var widget = this;
+
+  widget.config = config;
+
+  var templateSource = $('#type-' + config.type).html();
   widget.template = new Handlebars.compile(templateSource);
 
   $('#widgets').append(frame({widget: widget}));
@@ -11,23 +14,23 @@ function initWidget(widgetConf) {
   widget.sandbox = widget.element.find('.sandbox');
   widget.drawer = getDrawer(widget);
 
-  if (widget.config.id !== undefined) {
-    widget.element.attr('id', widget.config.id);
+  if (config.id !== undefined) {
+    widget.element.attr('id', config.id);
   }
 
   $.each(['width', 'height'], function(i, key) {
-    var value = widget.config[key];
+    var value = config[key];
     if (value !== undefined) {
-      widget.sandbox.css(key, widget.config[key]);
+      widget.sandbox.css(key, value);
     }
   });
 
-  if (widget.config.scale !== undefined) {
-    widget.sandbox.css('font-size', widget.config.scale.toString() + 'em');
+  if (config.scale !== undefined) {
+    widget.sandbox.css('font-size', config.scale.toString() + 'em');
   }
 
-  if (widget.config.reload !== undefined) {
-    setInterval(widget.drawer, widget.config.reload);
+  if (config.reload !== undefined) {
+    setInterval(widget.drawer, config.reload);
   }
 
   widget.drawer(true);
@@ -65,8 +68,8 @@ $(function() {
   $.getJSON('config.json', function(data) {
     $('title').text(data.title);
 
-    $.each(data.widgets, function(i, widget) {
-      initWidget(widget);
+    $.each(data.widgets, function(i, widgetConfig) {
+      new Widget(widgetConfig);
     });
   });
 });
