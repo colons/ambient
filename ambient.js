@@ -104,8 +104,20 @@ var drawers = {
   },
 
   jenkins: function(initial, widget, sandbox, template) {
+    var exclude = [];
+
+    if (widget.exclude !== undefined) {
+      exclude = widget.exclude;
+    }
+
     $.getJSON(widget.url, function(data) {
-      defaultDrawer(initial, widget, sandbox, template, {jobs: data.jobs});
+      var jobs = [];
+      $.each(data.jobs, function(i, job) {
+        if ($.inArray(job.name, exclude) === -1) {
+          jobs.push(job);
+        }
+      });
+      defaultDrawer(initial, widget, sandbox, template, {jobs: jobs});
     });
   }
 };
