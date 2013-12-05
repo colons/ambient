@@ -1,59 +1,60 @@
 var frame;
 
-function initWidget(widget) {
-  var source = $('#type-' + widget.type).html();
-  var template = new Handlebars.compile(source);
+function initWidget(widgetConf) {
+  var widget = {config: widgetConf};
+  var templateSource = $('#type-' + widget.config.type).html();
+  widget.template = new Handlebars.compile(templateSource);
 
   $('#widgets').append(frame({widget: widget}));
 
-  var element = $('#widgets > :last-child');
-  var sandbox = element.find('.sandbox');
-  var drawer = getDrawer(widget, sandbox, template);
+  widget.element = $('#widgets > :last-child');
+  widget.sandbox = widget.element.find('.sandbox');
+  widget.drawer = getDrawer(widget);
 
-  if (widget.id !== undefined) {
-    element.attr('id', widget.id);
+  if (widget.config.id !== undefined) {
+    widget.element.attr('id', widget.config.id);
   }
 
   $.each(['width', 'height'], function(i, key) {
-    var value = widget[key];
+    var value = widget.config[key];
     if (value !== undefined) {
-      sandbox.css(key, widget[key]);
+      widget.sandbox.css(key, widget.config[key]);
     }
   });
 
-  if (widget.scale !== undefined) {
-    sandbox.css('font-size', widget.scale.toString() + 'em');
+  if (widget.config.scale !== undefined) {
+    widget.sandbox.css('font-size', widget.config.scale.toString() + 'em');
   }
 
-  if (widget.reload !== undefined) {
-    setInterval(drawer, widget.reload);
+  if (widget.config.reload !== undefined) {
+    setInterval(widget.drawer, widget.config.reload);
   }
 
-  drawer(true);
+  widget.drawer(true);
 }
 
-function defaultDrawer(initial, widget, sandbox, template, context) {
-  console.log('drawing ' + widget.type);
+function defaultDrawer(initial, widget, context) {
+  console.log('drawing ' + widget.config.type);
   if (context === undefined) {
     console.log('resetting context');
     context = {};
   }
   context.widget = widget;
   console.log(context);
-  sandbox.html(template(context));
+  widget.sandbox.html(widget.template(context));
 }
 
-function getDrawer(widget, sandbox, template) {
+function getDrawer(widget) {
   var drawer;
 
-  if (widget.type in drawers) {
-    drawer = drawers[widget.type];
+  if (widget.config.type in drawers) {
+    drawer = drawers[widget.config.type];
   } else {
     drawer = defaultDrawer;
   }
 
   return function(initial) {
-    drawer(initial, widget, sandbox, template);
+    drawer(initial, widget);
   };
 }
 
@@ -85,16 +86,16 @@ var weekdays = [
 
 // the actual widgets
 var drawers = {
-  image: function(initial, widget, sandbox, template) {
+  image: function(initial, widget) {
     if (initial) {
-      defaultDrawer(initial, widget, sandbox, template);
+      defaultDrawer(initial, widget);
     }
-    sandbox.find('img').attr('src', widget.url + '?' + Date.now());
+    widget.sandbox.find('img').attr('src', widget.config.url + '?' + Date.now());
   },
 
-  clock: function(initial, widget, sandbox, template) {
+  clock: function(initial, widget) {
     now = new Date();
-    sandbox.html(template({
+    widget.sandbox.html(widget.template({
       hours: zeroPad(now.getHours()),
       minutes: zeroPad(now.getMinutes()),
       weekday: weekdays[now.getDay() - 1],
@@ -103,9 +104,9 @@ var drawers = {
     }));
   },
 
-  jenkins: function(initial, widget, sandbox, template) {
-    $.getJSON(widget.url, function(data) {
-      defaultDrawer(initial, widget, sandbox, template, {jobs: data.jobs});
+  jenkins: function(initial, widget) {
+    $.getJSON(widget.config.url, function(data) {
+      defaultDrawer(initial, widget, {jobs: data.jobs});
     });
   }
 };
