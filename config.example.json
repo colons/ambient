@@ -3,10 +3,10 @@
   "widgets": [
     {
       "type": "iframe",
-      "reload": 200000,
+      "reload": 10000,
       "width": "400px",
       "height": "300px",
-      "url": "http://procatinator.com/"
+      "url": "http://yyyyyyy.info/"
     },
     {
       "type": "clock",
