@@ -37,11 +37,9 @@ function Widget(config, frame) {
 function defaultDrawer(initial, widget, context) {
   console.log('drawing ' + widget.config.type);
   if (context === undefined) {
-    console.log('resetting context');
     context = {};
   }
   context.widget = widget;
-  console.log(context);
   widget.sandbox.html(widget.template(context));
 }
 
