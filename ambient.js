@@ -1,6 +1,4 @@
-var frame;
-
-function Widget(config) {
+function Widget(config, frame) {
   var widget = this;
 
   widget.config = config;
@@ -69,7 +67,7 @@ $(function() {
     $('title').text(data.title);
 
     $.each(data.widgets, function(i, widgetConfig) {
-      new Widget(widgetConfig);
+      new Widget(widgetConfig, frame);
     });
   });
 });
