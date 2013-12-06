@@ -103,21 +103,21 @@ var drawers = {
     }));
   },
 
-  jenkins: function(initial, widget, sandbox, template) {
+  jenkins: function(initial, widget) {
     var exclude = [];
 
-    if (widget.exclude !== undefined) {
-      exclude = widget.exclude;
+    if (widget.config.exclude !== undefined) {
+      exclude = widget.config.exclude;
     }
 
-    $.getJSON(widget.url, function(data) {
+    $.getJSON(widget.config.url, function(data) {
       var jobs = [];
       $.each(data.jobs, function(i, job) {
         if ($.inArray(job.name, exclude) === -1) {
           jobs.push(job);
         }
       });
-      defaultDrawer(initial, widget, sandbox, template, {jobs: jobs});
+      defaultDrawer(initial, widget, {jobs: jobs});
     });
   }
 };
