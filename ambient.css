@@ -106,11 +106,12 @@ h2 {
   width: 1em;
   height: 1em;
   border-radius: .5em;
-  background-color: #d66;
+  background-color: #aaa;
 }
 
 .widget.jenkins li.blue_anime::before,
 .widget.jenkins li.red_anime::before,
+.widget.jenkins li.notbuilt_anime::before,
 .widget.jenkins li.aborted_anime::before {
   opacity: .5;
 }
@@ -119,8 +120,8 @@ h2 {
 .widget.jenkins li.blue_anime::before {
   background-color: #6d6
 }
-.widget.jenkins li.aborted::before,
-.widget.jenkins li.aborted_anime::before {
-  background-color: #aaa
+.widget.jenkins li.red::before,
+.widget.jenkins li.red_anime::before {
+  background-color: #d66
 }
 

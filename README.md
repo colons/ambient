@@ -34,7 +34,13 @@ You can provide custom JS and custom CSS in custom.js and custom.css files in
 the project root.  You'll stop getting warnings in your console about 404s that
 way, too.
 
+The Jenkins widget violates CORS, so in order for it to work, you'll need to
+somehow proxy your Jenkins API with a server that adds a
+`Access-Control-Origin: *` header, configure Jenkins to serve that itself, or
+[disable CORS checking][cors] in your browser. The latter is probably easiest.
+
 [instance]: https://raw.github.com/colons/ambient/master/instance.jpg
 [panic]: http://www.panic.com/statusboard/
 [rkh]: https://github.com/rkhleics
 [demo]: http://colons.co/ambient/
+[cors]: http://stackoverflow.com/questions/3102819/chrome-disable-same-origin-policy
