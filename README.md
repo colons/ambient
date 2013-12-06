@@ -55,7 +55,8 @@ also requires a `"board"` attribute. For example:
       "type": "trello",
       "board": "[boardId]",
       "height": "300px",
-      "scale": 0.7
+      "scale": 0.7,
+      "reload": 10000
     }
   ]
 }
