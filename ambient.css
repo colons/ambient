@@ -78,7 +78,7 @@ h2 {
   -webkit-animation-timing-function: ease-in-out;
 }
 
-.widget.clock div {
+.widget.clock .sandbox {
   box-shadow: none;
   background: none;
   font-family: "HelveticaNeue-Bold";
@@ -125,3 +125,22 @@ h2 {
   background-color: #d66
 }
 
+/* trello */
+.widget.trello .sandbox {
+  box-shadow: none;
+}
+
+.widget.trello .list {
+  display: inline-block;
+  vertical-align: top;
+  width: 1em;
+}
+
+.widget.trello .card {
+  display: block;
+  width: 1em;
+  height: .5em;
+  border-radius: .2em;
+  margin-bottom: .1em;
+  background-color: #256a92;
+}

@@ -39,6 +39,28 @@ somehow proxy your Jenkins API with a server that adds a
 `Access-Control-Origin: *` header, configure Jenkins to serve that itself, or
 [disable CORS checking][cors] in your browser. The latter is probably easiest.
 
+The Trello widget, as well as violating CORS, requires authentication details.
+You provide these in a `"trelloAuth"` attribute of your config. Each widget
+also requires a `"board"` attribute. For example:
+
+```json
+{
+  "title": "Ambient",
+  "trelloAuth": {
+    "key": "[applicationKey]",
+    "token": "[userToken]"
+  },
+  "widgets": [
+    {
+      "type": "trello",
+      "board": "[boardId]",
+      "height": "300px",
+      "scale": 0.7
+    }
+  ]
+}
+```
+
 [instance]: https://raw.github.com/colons/ambient/master/instance.jpg
 [panic]: http://www.panic.com/statusboard/
 [rkh]: https://github.com/rkhleics

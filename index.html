@@ -39,6 +39,20 @@
       </ul>
     </script>
 
+    <script id="type-trello" type="text/x-handlebars-template">
+      <ul class="lists">
+        {{#each lists}}
+          <li class="list" title="{{name}}">
+            <ul class="cards">
+              {{#each cards}}
+                <li class="card" title="{{name}}"></li>
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
+
     <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
 

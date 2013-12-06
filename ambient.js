@@ -1,3 +1,5 @@
+var globalConfig;
+
 function Widget(config, frame) {
   var widget = this;
 
@@ -62,6 +64,7 @@ $(function() {
   frame = Handlebars.compile(frameSource);
 
   $.getJSON('config.json', function(data) {
+    globalConfig = data;
     $('title').text(data.title);
 
     $.each(data.widgets, function(i, widgetConfig) {
@@ -82,6 +85,21 @@ function zeroPad(number) {
 var weekdays = [
   "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
 ];
+
+function getTrelloLists(board, callback) {
+  var trelloArgs = $.extend({
+    lists: 'open',
+    cards: 'open'
+  }, globalConfig.trelloAuth);
+
+  var url = '//api.trello.com/1/boards/' + board + '/lists?' + $.param(trelloArgs);
+  console.log(url);
+
+  $.getJSON(url, function(data) {
+    console.log(data);
+    callback(data);
+  });
+}
 
 // the actual widgets
 var drawers = {
@@ -118,6 +136,12 @@ var drawers = {
         }
       });
       defaultDrawer(initial, widget, {jobs: jobs});
+    });
+  },
+
+  trello: function(initial, widget) {
+    getTrelloLists(widget.config.board, function(lists) {
+      defaultDrawer(initial, widget, {lists: lists});
     });
   }
 };
