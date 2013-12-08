@@ -20,11 +20,13 @@
       "height": "300px"
     },
     {
-      "name": "A snapshot of the OpenStack Jenkins server",
+      "name": "Jenkins build states",
       "type": "jenkins",
       "reload": 100000,
       "url": "http://colons.co/fake-jenkins-response.json",
-      "scale": 0.3
+      "scale": 1.5,
+      "exclude": ["check-devstack-dsvm-cells", "check-devstack-dsvm-cells-grizzly"],
+      "width": "400px"
     },
     {
       "name": "A webcam somewhere",
