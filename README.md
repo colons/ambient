@@ -6,6 +6,10 @@ A trivial [Status Board][panic] ripoff. Pictured above is the instance that
 runs in the office at [@rkhleics][rkh], and the example config in this repository is
 demonstrated [here][demo].
 
+Ambient provides basic widgets for embedding auto-refreshing images, iframes or
+raw HTML as well as custom widgets designed to give quick, abstract summaries
+of the state of things on a Trello board or a Jenkins server.
+
 ## Requirements
 
 - A webserver that can serve files from a directory
