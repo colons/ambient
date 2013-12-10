@@ -1,6 +1,6 @@
 var globalConfig;
 
-function Widget(config, frame) {
+function Widget(config, container, frame) {
   var widget = this;
 
   widget.config = config;
@@ -8,9 +8,9 @@ function Widget(config, frame) {
   var templateSource = $('#type-' + config.type).html();
   widget.template = new Handlebars.compile(templateSource);
 
-  $('#widgets').append(frame({widget: widget}));
+  container.append(frame({widget: widget}));
 
-  widget.element = $('#widgets > :last-child');
+  widget.element = container.find('> :last-child');
   widget.sandbox = widget.element.find('.sandbox');
   widget.drawer = getDrawer(widget);
 
@@ -62,13 +62,25 @@ function getDrawer(widget) {
 $(function() {
   var frameSource = $("#frame").html();
   frame = Handlebars.compile(frameSource);
+  var nestedFrameSource = $("#nested-frame").html();
+  nestedFrame = Handlebars.compile(nestedFrameSource);
 
   $.getJSON('config.json', function(data) {
     globalConfig = data;
     $('title').text(data.title);
+    var widgetsElement = $('#widgets');
 
     $.each(data.widgets, function(i, widgetConfig) {
-      new Widget(widgetConfig, frame);
+      if ($.isArray(widgetConfig)) {
+        widgetsElement.append(nestedFrame());
+        var container = widgetsElement.find(':last-child');
+
+        $.each(widgetConfig, function(i, nestedWidgetConfig) {
+            new Widget(nestedWidgetConfig, container, frame);
+        });
+      } else {
+        new Widget(widgetConfig, widgetsElement, frame);
+      }
     });
   });
 });
