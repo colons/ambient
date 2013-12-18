@@ -30,6 +30,11 @@ with just running `python -m SimpleHTTPServer` from the repository and visiting
 localhost:8000 in your browser. You can then kill the server, as it will not be
 needed until you update your config or need to reload for some other reason.
 
+Widgets will appear as wrapped flexbox rows; they will be drawn from left to
+right and wrap downwards. If you want to include two widgets directly on top of
+each other, put them in an array nested inside the widgets array like the
+clock and Jenkins widgets in the example config.
+
 Widget names are optional, but space is always made for headings above widgets
 in order to keep alignment consistent. `"width"` and `"height"`, if specified,
 will be applied to the widget, otherwise they'll be left default.

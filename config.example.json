@@ -7,26 +7,28 @@
       "height": "300px",
       "url": "http://colons.co/"
     },
-    {
-      "type": "clock",
-      "reload": 1000,
-      "scale": 3
-    },
+    [
+      {
+        "type": "clock",
+        "reload": 1000,
+        "scale": 2
+      },
+      {
+        "name": "Jenkins build states",
+        "type": "jenkins",
+        "reload": 100000,
+        "url": "http://colons.co/fake-jenkins-response.json",
+        "scale": 1.5,
+        "exclude": ["check-devstack-dsvm-cells", "check-devstack-dsvm-cells-grizzly"],
+        "width": "275px"
+      }
+    ],
     {
       "name": "Some weather",
       "type": "iframe",
       "url": "http://m.yr.no/place/United_Kingdom/England/Leicester/",
       "width": "400px",
       "height": "300px"
-    },
-    {
-      "name": "Jenkins build states",
-      "type": "jenkins",
-      "reload": 100000,
-      "url": "http://colons.co/fake-jenkins-response.json",
-      "scale": 1.5,
-      "exclude": ["check-devstack-dsvm-cells", "check-devstack-dsvm-cells-grizzly"],
-      "width": "400px"
     },
     {
       "name": "A webcam somewhere",
