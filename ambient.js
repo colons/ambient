@@ -98,6 +98,16 @@ var weekdays = [
   "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
 ];
 
+function colorFromSeed(seed) {
+  function twoFiftySix() {
+    seed = parseInt(Math.sin(seed).toString().substr(9), 10);
+    return (seed % 256).toFixed();
+  }
+  var rgbstr = 'rgb(' + twoFiftySix() + ',' + twoFiftySix() + ',' + twoFiftySix() + ')';
+  console.log(rgbstr);
+  return rgbstr;
+}
+
 function getTrelloLists(board, callback) {
   var trelloArgs = $.extend({
     lists: 'open',
@@ -105,10 +115,8 @@ function getTrelloLists(board, callback) {
   }, globalConfig.trelloAuth);
 
   var url = '//api.trello.com/1/boards/' + board + '/lists?' + $.param(trelloArgs);
-  console.log(url);
 
   $.getJSON(url, function(data) {
-    console.log(data);
     callback(data);
   });
 }
@@ -153,8 +161,17 @@ var drawers = {
 
   trello: function(initial, widget) {
     getTrelloLists(widget.config.board, function(lists) {
+      $.each(lists, function(listIndex, list) {
+        $.each(list.cards, function(cardIndex, card) {
+          if (card.idMembers.length > 0) {
+            card.color = colorFromSeed(parseInt(card.idMembers[0], 16));
+          } else {
+            card.color = null;
+          }
+        });
+      });
+
       defaultDrawer(initial, widget, {lists: lists});
     });
   }
 };
-

@@ -50,7 +50,7 @@
           <li class="list" title="{{name}}">
             <ul class="cards">
               {{#each cards}}
-                <li class="card" title="{{name}}"></li>
+                <li class="card" title="{{name}}" {{#if color}}style="background-color: {{color}};"{{/if}}></li>
               {{/each}}
             </ul>
           </li>
