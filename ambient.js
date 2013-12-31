@@ -104,7 +104,6 @@ function colorFromSeed(seed) {
     return (seed % 256).toFixed();
   }
   var rgbstr = 'rgb(' + twoFiftySix() + ',' + twoFiftySix() + ',' + twoFiftySix() + ')';
-  console.log(rgbstr);
   return rgbstr;
 }
 
