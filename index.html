@@ -23,20 +23,20 @@
       </li>
     </script>
 
-    <script id="type-iframe" type="text/x-handlebars-template">
+    <script id="widget-iframe" type="text/x-handlebars-template">
       <iframe src="{{widget.config.url}}"/>
     </script>
 
-    <script id="type-image" type="text/x-handlebars-template">
+    <script id="widget-image" type="text/x-handlebars-template">
       <img src="{{widget.config.url}}"/>
     </script>
 
-    <script id="type-clock" type="text/x-handlebars-template">
+    <script id="widget-clock" type="text/x-handlebars-template">
       <p class="time">{{hours}}<span class="colon">:</span>{{minutes}}</p>
       <p class="date">{{weekday}} {{date}} {{month}}</p>
     </script>
 
-    <script id="type-jenkins" type="text/x-handlebars-template">
+    <script id="widget-jenkins" type="text/x-handlebars-template">
       <ul>
         {{#each jobs}}
           <li class="{{color}}" title="{{name}}"></li>
@@ -44,7 +44,7 @@
       </ul>
     </script>
 
-    <script id="type-trello" type="text/x-handlebars-template">
+    <script id="widget-trello" type="text/x-handlebars-template">
       <ul class="lists">
         {{#each lists}}
           <li class="list" title="{{name}}">

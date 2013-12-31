@@ -5,7 +5,7 @@ function Widget(config, container, frame) {
 
   widget.config = config;
 
-  var templateSource = $('#type-' + config.type).html();
+  var templateSource = $('#widget-' + config.type).html();
   widget.template = new Handlebars.compile(templateSource);
 
   container.append(frame({widget: widget}));
