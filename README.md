@@ -40,17 +40,19 @@ in order to keep alignment consistent. `"width"` and `"height"`, if specified,
 will be applied to the widget, otherwise they'll be left default.
 
 You can provide custom JS and custom CSS in custom.js and custom.css files in
-the project root.  You'll stop getting warnings in your console about 404s that
+the project root. You'll stop getting warnings in your console about 404s that
 way, too.
 
-The Jenkins widget violates CORS, so in order for it to work, you'll need to
-somehow proxy your Jenkins API with a server that adds a
-`Access-Control-Origin: *` header, configure Jenkins to serve that itself, or
-[disable CORS checking][cors] in your browser. The latter is probably easiest.
+The Jenkins and Trello widgets violate CORS. In order for them to work, you'll
+need to somehow get those APIs to respond with a `Access-Control-Origin: *`
+header or [disable CORS checking][cors] in your browser. The latter is probably
+easiest.
 
 The Trello widget, as well as violating CORS, requires authentication details.
 You provide these in a `"trelloAuth"` attribute of your config. Each widget
-also requires a `"board"` attribute. For example:
+also requires a `"board"` attribute. You can also provide colours for each of
+the users (by ID) who might be assigned to cards on the boards you're looking
+at. For example:
 
 ```json
 {
@@ -58,6 +60,10 @@ also requires a `"board"` attribute. For example:
   "trelloAuth": {
     "key": "[applicationKey]",
     "token": "[userToken]"
+  },
+  "trelloColors": {
+      "52739f2228a34ec6730096e8": "#c52",
+      "50eac5bb91c27df70500208b": "black"
   },
   "widgets": [
     {

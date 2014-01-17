@@ -163,7 +163,8 @@ var drawers = {
       $.each(lists, function(listIndex, list) {
         $.each(list.cards, function(cardIndex, card) {
           if (card.idMembers.length > 0) {
-            card.color = colorFromSeed(parseInt(card.idMembers[0], 16));
+            console.log(card.idMembers[0]);
+            card.color = (globalConfig.trelloColors !== undefined && globalConfig.trelloColors[card.idMembers[0]]) || colorFromSeed(parseInt(card.idMembers[0], 16));
           } else {
             card.color = null;
           }
