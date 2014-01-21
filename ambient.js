@@ -136,7 +136,6 @@ var drawers = {
     }
 
     var src = widget.config.url + sep + 'ambient_timestamp=' + Date.now().toString();
-    console.log(src);
     widget.sandbox.find('img').attr('src', src);
   },
 
