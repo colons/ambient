@@ -126,7 +126,18 @@ var drawers = {
     if (initial) {
       defaultDrawer(initial, widget);
     }
-    widget.sandbox.find('img').attr('src', widget.config.url + '?' + Date.now());
+
+    var sep;
+
+    if (widget.config.url.indexOf('?') !== -1) {
+        sep = '&';
+    } else {
+        sep = '?';
+    }
+
+    var src = widget.config.url + sep + 'ambient_timestamp=' + Date.now().toString();
+    console.log(src);
+    widget.sandbox.find('img').attr('src', src);
   },
 
   clock: function(initial, widget) {
@@ -163,7 +174,6 @@ var drawers = {
       $.each(lists, function(listIndex, list) {
         $.each(list.cards, function(cardIndex, card) {
           if (card.idMembers.length > 0) {
-            console.log(card.idMembers[0]);
             card.color = (globalConfig.trelloColors !== undefined && globalConfig.trelloColors[card.idMembers[0]]) || colorFromSeed(parseInt(card.idMembers[0], 16));
           } else {
             card.color = null;
