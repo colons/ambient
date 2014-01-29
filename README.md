@@ -62,8 +62,8 @@ at. For example:
     "token": "[userToken]"
   },
   "trelloColors": {
-      "52739f2228a34ec6730096e8": "#c52",
-      "50eac5bb91c27df70500208b": "black"
+    "52739f2228a34ec6730096e8": "#c52",
+    "50eac5bb91c27df70500208b": "black"
   },
   "widgets": [
     {
