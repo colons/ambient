@@ -153,6 +153,7 @@ h2 {
   padding: 0;
   font-size: 1.2em;
   display: table;
+  text-shadow: 0 .1em .3em black;
 }
 
 .widget.hn ul li {
@@ -167,4 +168,6 @@ h2 {
 .widget.hn ul li span.points {
   display: table-cell;
   text-align: right;
+  opacity: .8;
+  font-weight: bold;
 }
