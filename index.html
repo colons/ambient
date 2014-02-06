@@ -36,6 +36,14 @@
       <p class="date">{{weekday}} {{date}} {{month}}</p>
     </script>
 
+    <script id="widget-hn" type="text/x-handlebars-template">
+      <ul>
+        {{#each items}}
+          <li><span class="points">{{points}}</span> <span class="title">{{title}}</span></li>
+        {{/each}}
+      </ul>
+    </script>
+
     <script id="widget-jenkins" type="text/x-handlebars-template">
       <ul>
         {{#each jobs}}

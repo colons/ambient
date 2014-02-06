@@ -150,6 +150,12 @@ var drawers = {
     }));
   },
 
+  hn: function(initial, widget) {
+    $.getJSON('http://api.ihackernews.com/page', function(data) {
+      defaultDrawer(initial, widget, data);
+    });
+  },
+
   jenkins: function(initial, widget) {
     var exclude = [];
 

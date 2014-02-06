@@ -43,10 +43,10 @@ You can provide custom JS and custom CSS in custom.js and custom.css files in
 the project root. You'll stop getting warnings in your console about 404s that
 way, too.
 
-The Jenkins and Trello widgets violate CORS. In order for them to work, you'll
-need to somehow get those APIs to respond with a `Access-Control-Origin: *`
-header or [disable CORS checking][cors] in your browser. The latter is probably
-easiest.
+The Jenkins, Trello and Hacker News widgets violate CORS. In order for them to
+work, you'll need to somehow get those APIs to respond with a
+`Access-Control-Origin: *` header or [disable CORS checking][cors] in your
+browser. The latter is probably easiest.
 
 The Trello widget, as well as violating CORS, requires authentication details.
 You provide these in a `"trelloAuth"` attribute of your config. Each widget

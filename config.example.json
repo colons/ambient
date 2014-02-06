@@ -2,6 +2,13 @@
   "title": "Ambient",
   "widgets": [
     {
+      "type": "hn",
+      "width": "400px",
+      "height": "300px",
+      "reload": 30000,
+      "title": "The Latest GNUs"
+    },
+    {
       "type": "iframe",
       "width": "400px",
       "height": "300px",

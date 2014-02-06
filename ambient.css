@@ -145,3 +145,26 @@ h2 {
   margin-bottom: 2px;
   background-color: white;
 }
+
+/* hn */
+.widget.hn ul {
+  background-color: #f60;
+  color: white;
+  padding: 0;
+  font-size: 1.2em;
+  display: table;
+}
+
+.widget.hn ul li {
+  display: table-row;
+}
+
+.widget.hn ul li span {
+  display: table-cell;
+  padding: .3em .5em;
+}
+
+.widget.hn ul li span.points {
+  display: table-cell;
+  text-align: right;
+}
