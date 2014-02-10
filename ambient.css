@@ -188,7 +188,7 @@ h2 {
 .widget.forecast p.currently {
   font-size: 2em;
   text-align: center;
-  font-weight: normal;
+  font-weight: bold;
   margin-bottom: .1em;
 }
 
