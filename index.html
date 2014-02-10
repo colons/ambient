@@ -3,6 +3,7 @@
   <head>
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
 
     <script id="frame" type="text/x-handlebars-template">
       <li class="widget {{widget.config.type}}">
@@ -45,9 +46,10 @@
     </script>
 
     <script id="widget-forecast" type="text/x-handlebars-template">
-      <p>{{minutely.summary}}</p>
-      <p>{{hourly.summary}}</p>
-      <p>{{daily.summary}}</p>
+      <p class="currently">{{currently.temperature}}°</p>
+      <p class="minutely">{{minutely.summary}}</p>
+      <p class="hourly">{{hourly.summary}}</p>
+      <p class="daily">{{daily.summary}}</p>
     </script>
 
     <script id="widget-jenkins" type="text/x-handlebars-template">

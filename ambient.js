@@ -158,7 +158,7 @@ var drawers = {
 
   forecast: function(initial, widget) {
     var baseURL = 'http://api.forecast.io/forecast/' + globalConfig.forecastAPIKey + '/';
-    $.getJSON(baseURL + widget.config.location, function(data) {
+    $.getJSON(baseURL + widget.config.location + '?units=auto', function(data) {
       defaultDrawer(initial, widget, data);
     });
   },

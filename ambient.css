@@ -173,3 +173,29 @@ h2 {
 .widget.hn ul li span.title {
   font-weight: bold;
 }
+
+/* forecast */
+.widget.forecast .sandbox {
+  background-color: #ddf;
+  padding: .3em;
+}
+
+.widget.forecast p {
+  background-color: #ddf;
+  margin-bottom: .3em;
+}
+
+.widget.forecast p.currently {
+  font-size: 2em;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: .1em;
+}
+
+.widget.forecast p.minutely {
+  font-size: 1.4em;
+}
+
+.widget.forecast p.hourly {
+  font-size: 1.2em;
+}
