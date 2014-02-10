@@ -156,6 +156,13 @@ var drawers = {
     });
   },
 
+  forecast: function(initial, widget) {
+    var baseURL = 'http://api.forecast.io/forecast/' + globalConfig.forecastAPIKey + '/';
+    $.getJSON(baseURL + widget.config.location, function(data) {
+      defaultDrawer(initial, widget, data);
+    });
+  },
+
   jenkins: function(initial, widget) {
     var exclude = [];
 

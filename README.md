@@ -43,8 +43,8 @@ You can provide custom JS and custom CSS in custom.js and custom.css files in
 the project root. You'll stop getting warnings in your console about 404s that
 way, too.
 
-The Jenkins, Trello and Hacker News widgets violate CORS. In order for them to
-work, you'll need to somehow get those APIs to respond with a
+The Jenkins, Trello, Forecast and Hacker News widgets violate CORS. In order for
+them to work, you'll need to somehow get those APIs to respond with a
 `Access-Control-Origin: *` header or [disable CORS checking][cors] in your
 browser. The latter is probably easiest.
 
@@ -77,8 +77,15 @@ at. For example:
 }
 ```
 
+The Forecast widget requires a [Forecast][fcio] API key to be set as
+`forecastAPIKey`, and I recommend setting the `reload` attribute of your widget
+to a number a above 86400 to avoid going over the 1,000 requests/day limit. The
+widget iself requires a `location` attribute in the `lat,lng` format the
+Forecast API understands.
+
 [instance]: https://raw.github.com/colons/ambient/master/instance.jpg
 [panic]: http://www.panic.com/statusboard/
 [rkh]: https://github.com/rkhleics
 [demo]: http://colons.co/ambient/
 [cors]: http://stackoverflow.com/questions/3102819/chrome-disable-same-origin-policy
+[fcio]: https://developer.forecast.io/

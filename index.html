@@ -44,6 +44,12 @@
       </ul>
     </script>
 
+    <script id="widget-forecast" type="text/x-handlebars-template">
+      <p>{{minutely.summary}}</p>
+      <p>{{hourly.summary}}</p>
+      <p>{{daily.summary}}</p>
+    </script>
+
     <script id="widget-jenkins" type="text/x-handlebars-template">
       <ul>
         {{#each jobs}}
