@@ -148,12 +148,11 @@ h2 {
 
 /* hn */
 .widget.hn ul {
-  background-color: #f60;
-  color: white;
+  background-color: #fcb;
+  color: black;
   padding: 0;
   font-size: 1.2em;
   display: table;
-  text-shadow: 0 .1em .3em black;
 }
 
 .widget.hn ul li {
@@ -162,12 +161,15 @@ h2 {
 
 .widget.hn ul li span {
   display: table-cell;
-  padding: .3em .5em;
+  padding: .3em .4em;
 }
 
 .widget.hn ul li span.points {
   display: table-cell;
   text-align: right;
-  opacity: .8;
+  opacity: .9;
+}
+
+.widget.hn ul li span.title {
   font-weight: bold;
 }
