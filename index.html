@@ -48,7 +48,7 @@
     <script id="widget-forecast" type="text/x-handlebars-template">
       <p class="currently">{{currently.temperature}}°</p>
       <ul class="minutes">
-        {{#each minutely.data}}<li style="height: {{precipIntensity}}em;"></li>{{/each}}
+        {{#each minutely.data}}<li style="height: {{precipIntensity}}em; opacity: {{precipProbability}};"></li>{{/each}}
       </ul>
     </script>
 
