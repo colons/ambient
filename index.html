@@ -47,9 +47,9 @@
 
     <script id="widget-forecast" type="text/x-handlebars-template">
       <p class="currently">{{currently.temperature}}°</p>
-      <p class="minutely">{{minutely.summary}}</p>
-      <p class="hourly">{{hourly.summary}}</p>
-      <p class="daily">{{daily.summary}}</p>
+      <ul class="minutes">
+        {{#each minutely.data}}<li style="height: {{precipIntensity}}em;"></li>{{/each}}
+      </ul>
     </script>
 
     <script id="widget-jenkins" type="text/x-handlebars-template">

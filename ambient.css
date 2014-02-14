@@ -177,7 +177,6 @@ h2 {
 /* forecast */
 .widget.forecast .sandbox {
   background-color: #ddf;
-  padding: .3em;
 }
 
 .widget.forecast p {
@@ -192,10 +191,18 @@ h2 {
   margin-bottom: .1em;
 }
 
-.widget.forecast p.minutely {
-  font-size: 1.4em;
+.widget.forecast ul.minutes {
+  display: inline-flex;
+  flex-flow: row;
+  font-size: 1.3em;  /* scale of the chart */
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
-.widget.forecast p.hourly {
-  font-size: 1.2em;
+.widget.forecast ul.minutes li {
+  margin-top: auto;
+  flex: auto;
+  display: inline-block;
+  background-color: blue;
 }
