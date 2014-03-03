@@ -73,10 +73,10 @@ $(function() {
     $.each(data.widgets, function(i, widgetConfig) {
       if ($.isArray(widgetConfig)) {
         widgetsElement.append(nestedFrame());
-        var container = widgetsElement.find(':last-child');
+        var container = widgetsElement.find('> :last-child');
 
         $.each(widgetConfig, function(i, nestedWidgetConfig) {
-            new Widget(nestedWidgetConfig, container, frame);
+          new Widget(nestedWidgetConfig, container, frame);
         });
       } else {
         new Widget(widgetConfig, widgetsElement, frame);
