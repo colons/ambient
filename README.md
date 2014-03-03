@@ -83,7 +83,7 @@ to a number a above 86400 to avoid going over the 1,000 requests/day limit. The
 widget iself requires a `location` attribute in the `lat,lng` format the
 Forecast API understands.
 
-[instance]: https://raw.github.com/colons/ambient/master/instance.jpg
+[instance]: https://github.com/colons/ambient/raw/master/instance.jpg
 [panic]: http://www.panic.com/statusboard/
 [rkh]: https://github.com/rkhleics
 [demo]: http://colons.co/ambient/
