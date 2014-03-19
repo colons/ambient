@@ -136,7 +136,12 @@ var drawers = {
     }
 
     var src = widget.config.url + sep + 'ambient_timestamp=' + Date.now().toString();
-    widget.sandbox.find('img').attr('src', src);
+
+    try {
+      widget.sandbox.find('img').attr('src', src);
+    } catch(e) {
+      console.log(e);
+    }
   },
 
   clock: function(initial, widget) {
