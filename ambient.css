@@ -74,6 +74,7 @@ h2 {
   font-weight: bold;
   color: #eee;
   opacity: 0;
+  pointer-events: none;
 }
 
 
