@@ -12,7 +12,7 @@
       "type": "iframe",
       "width": "400px",
       "height": "300px",
-      "url": "http://colons.co/"
+      "url": "https://colons.co/"
     },
     [
       {
@@ -24,7 +24,7 @@
         "name": "Jenkins build states",
         "type": "jenkins",
         "reload": 100000,
-        "url": "http://colons.co/fake-jenkins-response.json",
+        "url": "https://colons.co/fake-jenkins-response.json",
         "scale": 1.5,
         "exclude": ["check-devstack-dsvm-cells", "check-devstack-dsvm-cells-grizzly"],
         "width": "275px"
