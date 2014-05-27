@@ -61,6 +61,21 @@ h2 {
   height: 100%;
 }
 
+#error {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 8em;
+  text-align: center;
+  word-wrap: break-word;
+  background-color: #d66;
+  font-weight: bold;
+  color: #eee;
+  opacity: 0;
+}
+
 
 /* --- WIDGET-SPECIFIC STYLES --- */
 /* clock */

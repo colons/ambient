@@ -1,4 +1,29 @@
-var globalConfig;
+var globalConfig,
+    errorDisplay;
+
+function complainAboutSomethingBeingBroken(string) {
+  console.log(string);
+  errorDisplay.text(string);
+  errorDisplay.finish();
+  errorDisplay.css({opacity: 1});
+  errorDisplay.animate({opacity: 0}, 20000);
+}
+
+function bindErrorHandling() {
+  $('*').off('error');
+  $('*').on('error', function(err) {
+    if (err.target && err.target.src) {
+      complainAboutSomethingBeingBroken('Error loading ' + err.target.src);
+    } else {
+      console.log(err);
+      complainAboutSomethingBeingBroken('Something is broken. Look at the console.');
+    }
+  });
+}
+
+$(document).ajaxError(function(ev, xhr, settings) {
+complainAboutSomethingBeingBroken('Error loading ' + settings.url);
+});
 
 function Widget(config, container, frame) {
   var widget = this;
@@ -56,10 +81,13 @@ function getDrawer(widget) {
 
   return function(initial) {
     drawer(initial, widget);
+    bindErrorHandling();
   };
 }
 
 $(function() {
+  errorDisplay = $('#error');
+
   var frameSource = $("#frame").html();
   frame = Handlebars.compile(frameSource);
   var nestedFrameSource = $("#nested-frame").html();
@@ -137,11 +165,7 @@ var drawers = {
 
     var src = widget.config.url + sep + 'ambient_timestamp=' + Date.now().toString();
 
-    try {
-      widget.sandbox.find('img').attr('src', src);
-    } catch(e) {
-      console.log(e);
-    }
+    widget.sandbox.find('img').attr('src', src);
   },
 
   clock: function(initial, widget) {
