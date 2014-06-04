@@ -65,7 +65,7 @@ h2 {
 #error {
   position: absolute;
   right: 0;
-  bottom: 0;
+  top: 0;
   font-size: 1.8em;
   text-align: right;
   word-wrap: break-word;

@@ -6,7 +6,7 @@ function complainAboutSomethingBeingBroken(string) {
   errorDisplay.text(string);
   errorDisplay.finish();
   errorDisplay.css({opacity: 1});
-  errorDisplay.animate({opacity: 0}, 20000);
+  errorDisplay.animate({opacity: 0}, 1000 * 60 * 5);
 }
 
 function bindErrorHandling() {
