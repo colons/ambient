@@ -156,7 +156,7 @@ var drawers = {
   },
 
   hn: function(initial, widget) {
-    $.getJSON('http://api.ihackernews.com/page', function(data) {
+    $.getJSON('https://api.ihackernews.com/page', function(data) {
       defaultDrawer(initial, widget, data);
     });
   },
