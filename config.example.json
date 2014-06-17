@@ -1,5 +1,10 @@
 {
   "title": "Ambient",
+  "forecastAPIKey": "[your forecast API key]",
+  "trelloAuth": {
+    "key": "[your key]",
+    "token": "[your token]"
+  },
   "widgets": [
     {
       "type": "hn",
