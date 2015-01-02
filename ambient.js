@@ -70,6 +70,16 @@ function manageWidget(index) {
     }
   });
 
+  if (config.height === undefined) {
+    $(element).load(function() {
+      // give it a chance to actually show the image
+      setTimeout(function() {
+        var body = element.contentWindow.document.body;
+        $(element).height(body.scrollHeight);
+      }, 1000);
+    });
+  }
+
   if (config.reload !== undefined) {
     console.log(config);
     setInterval(function() {
