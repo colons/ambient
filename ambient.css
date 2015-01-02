@@ -6,12 +6,20 @@
   list-style: none;
 }
 
-html {
+body {
   background-color: #eee;
   color: #222;
   font-family: "Helvetica Neue" "Helvetica" sans-serif;
-  margin: .2em;
   position: relative;
+}
+
+body.master {
+  margin: .2em;
+}
+
+html, body.widget {
+  width: 100vw;
+  height: 100vh;
 }
 
 #widgets {
@@ -29,37 +37,14 @@ html {
   -webkit-justify-content: space-around;
 }
 
-#widgets .widget {
+#widgets iframe {
   position: relative;
   margin: 0 .1em .5em;
+  border-radius: .3em;
 }
 
 h2 {
   text-align: center;
-}
-
-.sandbox {
-  max-width: 100%;
-  border-radius: .3rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  position: relative;
-  overflow: hidden;
-}
-
-.sandbox > *:last-child {
-  /* counter the effects of border-radius */
-  margin-bottom: -.3rem;
-}
-
-.sandbox > img {
-  width: 100%;
-  height:  100%;
-}
-
-.sandbox > iframe {
-  background-color: white;
-  width: 100%;
-  height: 100%;
 }
 
 #error {
@@ -85,6 +70,14 @@ h2 {
   100% {opacity:0}
 }
 
+.widget.clock {
+  box-shadow: none;
+  background: none;
+  font-family: "HelveticaNeue-Bold";
+  text-align: center;
+  font-size: 5em;
+}
+
 .widget.clock .colon {
   -webkit-animation-direction: normal;
   -webkit-animation-duration: 1s;
@@ -93,20 +86,12 @@ h2 {
   -webkit-animation-timing-function: ease-in-out;
 }
 
-.widget.clock .sandbox {
-  box-shadow: none;
-  background: none;
-  font-family: "HelveticaNeue-Bold";
-  text-align: center;
-  font-size: 5em;
-}
-
 .widget.clock .time {
   font-size: 2em;
 }
 
 /* jenkins */
-.widget.jenkins .sandbox {
+.widget.jenkins {
   box-shadow: none;
   overflow: visible;
 }
@@ -141,7 +126,7 @@ h2 {
 }
 
 /* trello */
-.widget.trello .sandbox {
+.widget.trello {
   background-color: #256a92;
   padding: .2em;
 }
@@ -190,7 +175,7 @@ h2 {
 }
 
 /* forecast */
-.widget.forecast .sandbox {
+.widget.forecast {
   background-color: #ddf;
 }
 

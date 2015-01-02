@@ -4,15 +4,10 @@ if (document.location.hash) {
   widgetIndex = parseInt(document.location.hash.slice(1), 10);
 }
 
-var globalConfig,
-    errorDisplay;
+var globalConfig;
 
 function complainAboutSomethingBeingBroken(string) {
   console.log(string);
-  errorDisplay.text(string);
-  errorDisplay.finish();
-  errorDisplay.css({opacity: 1});
-  errorDisplay.animate({opacity: 0}, 1000 * 60 * 5);
 }
 
 $(document).ajaxError(function(ev, xhr, settings) {
@@ -38,14 +33,10 @@ function Widget(config) {
     $(document.body).css('font-size', config.scale.toString() + 'em');
   }
 
-  if (config.reload !== undefined) {
-    setInterval(widget.drawer, config.reload);
-  }
-
-  widget.drawer(true);
+  widget.drawer();
 }
 
-function defaultDrawer(initial, widget, context) {
+function defaultDrawer(widget, context) {
   console.log('drawing ' + widget.config.type);
   if (context === undefined) {
     context = {};
@@ -63,46 +54,45 @@ function getDrawer(widget) {
     drawer = defaultDrawer;
   }
 
-  return function(initial) {
-    drawer(initial, widget);
-    bindErrorHandling();
+  return function() {
+    drawer(widget);
   };
 }
 
-$(function() {
-  errorDisplay = $('#error');
+function manageWidget(index) {
+  var config = globalConfig.widgets[index];
+  var element = document.getElementById('widget-' + index.toString());
 
-  var frameSource = $("#frame").html();
-  frame = Handlebars.compile(frameSource);
-  var nestedFrameSource = $("#nested-frame").html();
-  nestedFrame = Handlebars.compile(nestedFrameSource);
+  $.each(['width', 'height'], function(i, key) {
+    var value = config[key];
+    if (value !== undefined) {
+      $(element).css(key, value);
+    }
+  });
+
+  if (config.reload !== undefined) {
+    console.log(config);
+    setInterval(function() {
+      element.contentDocument.location.reload(true);
+    }, config.reload);
+  }
+}
+
+$(function() {
+  var frameSource = $("#frames").html();
+  var frames = Handlebars.compile(frameSource);
 
   $.getJSON('config.json', function(data) {
     globalConfig = data;
     $('title').text(data.title);
-    var widgetsElement = $('#widgets');
 
     if (widgetIndex === undefined) {
       // this is the root page, we should draw templates
       document.body.classList.add('primary');
-
-      $.each(data.widgets, function(i, widgetConfig) {
-        if ($.isArray(widgetConfig)) {
-          throw 'nested widgets are not implemented yet :<';
-          // XXX nested widgets!
-        } else {
-          // new Widget(widgetConfig, widgetsElement, frame);
-          // XXX make an iframe
-          /* and scale it:
-          $.each(['width', 'height'], function(i, key) {
-            var value = config[key];
-            if (value !== undefined) {
-              widget.sandbox.css(key, value);
-            }
-          });
-          */
-        }
-      });
+      $(document.body).html(frames(data));
+      for (var i = 0; i < data.widgets.length; i++) {
+        manageWidget(i);
+      }
     } else {
       // this is a particular widget that we should draw
       new Widget(data.widgets[widgetIndex]);
@@ -147,10 +137,8 @@ function getTrelloLists(board, callback) {
 
 // the actual widgets
 var drawers = {
-  image: function(initial, widget) {
-    if (initial) {
-      defaultDrawer(initial, widget);
-    }
+  image: function(widget) {
+    defaultDrawer(widget);
 
     var sep;
 
@@ -162,12 +150,12 @@ var drawers = {
 
     var src = widget.config.url + sep + 'ambient_timestamp=' + Date.now().toString();
 
-    widget.sandbox.find('img').attr('src', src);
+    $(document.body).find('img').attr('src', src);
   },
 
-  clock: function(initial, widget) {
+  clock: function(widget) {
     now = new Date();
-    widget.sandbox.html(widget.template({
+    $(document.body).html(widget.template({
       hours: zeroPad(now.getHours()),
       minutes: zeroPad(now.getMinutes()),
       weekday: weekdays[now.getDay() - 1],
@@ -176,21 +164,15 @@ var drawers = {
     }));
   },
 
-  hn: function(initial, widget) {
-    $.getJSON('https://api.ihackernews.com/page', function(data) {
-      defaultDrawer(initial, widget, data);
-    });
-  },
-
-  forecast: function(initial, widget) {
+  forecast: function(widget) {
     var baseURL = 'http://api.forecast.io/forecast/' + globalConfig.forecastAPIKey + '/';
     $.getJSON(baseURL + widget.config.location + '?units=auto', function(data) {
       data.currently.temperature = data.currently.temperature.toFixed(0);
-      defaultDrawer(initial, widget, data);
+      defaultDrawer(widget, data);
     });
   },
 
-  jenkins: function(initial, widget) {
+  jenkins: function(widget) {
     var exclude = [];
 
     if (widget.config.exclude !== undefined) {
@@ -204,11 +186,11 @@ var drawers = {
           jobs.push(job);
         }
       });
-      defaultDrawer(initial, widget, {jobs: jobs});
+      defaultDrawer(widget, {jobs: jobs});
     });
   },
 
-  trello: function(initial, widget) {
+  trello: function(widget) {
     getTrelloLists(widget.config.board, function(lists) {
       $.each(lists, function(listIndex, list) {
         $.each(list.cards, function(cardIndex, card) {
@@ -220,7 +202,7 @@ var drawers = {
         });
       });
 
-      defaultDrawer(initial, widget, {lists: lists});
+      defaultDrawer(widget, {lists: lists});
     });
   }
 };

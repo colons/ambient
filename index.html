@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta charset="utf-8">
 
-    <script id="frame" type="text/x-handlebars-template">
-      <li class="widget {{widget.config.type}}">
-        <h2>
-          {{#if widget.config.name}}
-            {{widget.config.name}}
-          {{else}}
-            &nbsp;
-          {{/if}}
-        </h2>
-        <div class="sandbox">
-        </div>
-      </li>
+    <script id="frames" type="text/x-handlebars-template">
+      <ul id="widgets">
+        {{#each widgets}}
+          <li class="widget {{widget.config.type}}">
+            <h2>
+              {{#if widget.config.name}}
+                {{widget.config.name}}
+              {{else}}
+                &nbsp;
+              {{/if}}
+            </h2>
+            <iframe src=".#{{@index}}" id="widget-{{@index}}"/>
+          </li>
+        {{/each}}
+      </ul>
     </script>
 
     <script id="nested-frame" type="text/x-handlebars-template">
@@ -84,9 +87,5 @@
     <link rel="stylesheet" href="custom.css"></script>
   </head>
   <body>
-    <ul id="widgets">
-    </ul>
-    <div id="error">
-    </div>
   </body>
 </html>
