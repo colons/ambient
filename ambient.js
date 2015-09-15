@@ -186,7 +186,9 @@ var drawers = {
   },
 
   forecast: function(initial, widget) {
-    var baseURL = 'http://api.forecast.io/forecast/' + globalConfig.forecastAPIKey + '/';
+    var prefix = globalConfig.forecastURLPrefix || 'http://api.forecast.io/forecast/';
+    var baseURL = prefix + globalConfig.forecastAPIKey + '/';
+
     $.getJSON(baseURL + widget.config.location + '?units=auto', function(data) {
       data.currently.temperature = data.currently.temperature.toFixed(0);
       defaultDrawer(initial, widget, data);
